@@ -13,6 +13,7 @@ package org.usfirst.frc5179.Robot2015.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc5179.Robot2015.Robot;
+import org.usfirst.frc5179.Robot2015.subsystems.Lift;
 
 /**
  *
@@ -34,6 +35,9 @@ public class  LiftDownMax extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	while (Lift.liftDownLimit.get() == false) { // If lift limit switch isn't pushed and motor isn't moving
+            Lift.victorSPLift.set(-0.7);	// Set motor speed to 70% down (this method is activated on button press instead of while button pressed)
+        }
     }
 
     // Make this return true when this Command no longer needs to run execute()

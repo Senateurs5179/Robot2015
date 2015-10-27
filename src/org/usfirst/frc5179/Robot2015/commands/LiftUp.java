@@ -12,7 +12,10 @@
 package org.usfirst.frc5179.Robot2015.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
+
+import org.usfirst.frc5179.Robot2015.OI;
 import org.usfirst.frc5179.Robot2015.Robot;
+import org.usfirst.frc5179.Robot2015.subsystems.Lift;
 
 /**
  *
@@ -34,6 +37,9 @@ public class  LiftUp extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	while (OI.liftDownButton.get() && OI.liftDownMaxButton.get() == false) { // If lift limit switch and buttons aren't pushed
+            Lift.victorSPLift.set(0.7);	// Set motor speed to 70% down
+        }    	
     }
 
     // Make this return true when this Command no longer needs to run execute()
